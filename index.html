@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Medibox - system elektronicznej rejestracji</title>
+
+		<meta name="description" content="Prezentacja IWM">
+		<meta name="author" content="Patryk Karolak">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h4>System elektronicznej rejestracji</h4>						
+					<h1>Medibox</h1>					
+					<h4>Wykonany w ramach przedmiotu <br/>Informatyka w Medycynie</h4>
+					<p>
+						<small>Autorzy: Patryk Karolak, Kamil Pawluczuk<br/>
+						Wydział Informatyki, Politechnika Poznańska 2014						
+						</small>
+					</p>
+				</section>
+				<section>
+					<h2>Sens projektu</h2>
+					<p class=fragment>System jest aplikacją internetową, która w wielu aspektach usprawnia pracę przychodni medycznych.</p>
+
+				</section>
+
+				<section>
+					<h2>Zarys problemu</h2>
+					<ul>
+						<li class=fragment>internetowa rejestracja pacjentów</li>
+						<li class=fragment>przechowywanie historii choroby</li>
+						<li class=fragment>definiowanie procedur medycznych</li>
+						<li class=fragment>lista leków dopuszczonych do obrotu</li>
+						<li class=fragment>zarządzanie godzinami pracy przychodni i lekarzy</li>
+						<li class=fragment>obsługa pacjenta o nieznanej tożsamości</li>
+						<li class=fragment>powiadomienia SMS</li>
+					</ul>
+
+				</section>
+
+				<section>
+					<h2>Architektura aplikacji</h2>
+					<uL>
+						<li class=fragment>architektura MVC</li>
+						<li class=fragment>wykorzystany framework Web2Py</li>
+						<li class=fragment>wiele poziomów autoryzacji - uprawnienia zależne od typu użytkownika</li>
+					</ul>		
+				</section>
+
+				<section>
+					<section>
+						<h2>Fazy rozwoju aplikacji</h2>
+					</section>
+					<section>
+						<h2>Faza I</h2>
+						<ul>
+							<li>Projektowanie przepływu sterowania dla aplikacji korzystającej z MVC</li>
+							<li>Implementacja podstawowego zarządzania użytkownikami</li>
+							<li>Częściowa implementacja części funkcjonalnych - bez walidacji danych</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Faza II</h2>
+						<ul>
+							<li>Uzupełnienie wymagań funkcjonalnych</li>
+							<li>Dodanie nieblokującej walidacji danych</li>
+							<li>Integracja z bazą danych leków i procedur ICD-9</li>
+							<li>Dodanie funkcjonalności powiadomienia SMS</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Napotkane problemy</h2>
+					<ul>
+						<li class=fragment>Wybór darmowej bramki SMS i integracja z systemem</li>
+						<li class=fragment>Trudność debugowania skryptów cron w Web2Py</li>
+						<li class=fragment>Walidacja NIEBLOKUJĄCA</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Prezentacja działania systemu</h2>
+				</section>
+
+				<section>
+					<h2>Pytania? Sugestie?</h2>
+				</section>
+				
+				<section>
+					<h2>Dziękujemy za uwagę</h2>
+					<small>Patryk Karolak, Kamil Pawluczuk <br/> Wydział Informatyki, Politechnika Poznańska 2014</small>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
